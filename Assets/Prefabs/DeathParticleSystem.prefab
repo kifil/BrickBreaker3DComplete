@@ -11,7 +11,7 @@ GameObject:
   - 198: {fileID: 19869070}
   - 199: {fileID: 19944760}
   m_Layer: 0
-  m_Name: BrickParticleSystem
+  m_Name: DeathPArticleSystem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1538,7 +1538,7 @@ ParticleSystemRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: 9572eb0cc132eb345ab48d9951824b44, type: 2}
+  - {fileID: 2100000, guid: f86b545f11eb2bc41a27def0080c00ef, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -1575,7 +1575,15 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f86b545f11eb2bc41a27def0080c00ef, type: 2}
+    - target: {fileID: 0}
+      propertyPath: m_Name
+      value: DeathPArticleSystem
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 115174}
