@@ -21,7 +21,7 @@ Material:
           name: _MainTex
         second:
           m_Texture: {fileID: 0}
-          m_Scale: {x: 1, y: 1}
+          m_Scale: {x: 2, y: 2}
           m_Offset: {x: 0, y: 0}
       data:
         first:
@@ -128,6 +128,14 @@ Material:
         first:
           name: _Metallic
         second: 0
+      data:
+        first:
+          name: _MainTexMoveSpeedU
+        second: 0.5
+      data:
+        first:
+          name: _MainTexMoveSpeedV
+        second: 0.5
     m_Colors:
       data:
         first:
