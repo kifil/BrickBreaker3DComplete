@@ -6,17 +6,13 @@ using UnityEngine.SceneManagement;
 public class GM : MonoBehaviour
 {
 
-    //some variables for teh editor
+    //some variables for the editor
     public int lives = 3;
     public int bricks = 20;
     public float resetDelay = 1f;
     //our game and UI objects
-    public Text livesText;
-    public GameObject gameOver;
-    public GameObject youWon;
     public GameObject bricksPrefab;
     public GameObject paddle;
-    public GameObject deathParticles;
 
     //static singleton instance of this gamemanager
     public static GM instance = null;
@@ -49,7 +45,6 @@ public class GM : MonoBehaviour
         //win condition
         if (bricks < 1)
         {
-            youWon.SetActive(true);
             //awesome slo-mo effect
             Time.timeScale = .25f;
             //reset game after a delay
@@ -58,7 +53,6 @@ public class GM : MonoBehaviour
         //lose condition
         if (lives < 1)
         {
-            gameOver.SetActive(true);
             Time.timeScale = .25f;
             Invoke("Reset", resetDelay);
         }
@@ -70,15 +64,12 @@ public class GM : MonoBehaviour
         Time.timeScale = 1f;
         //reload current level
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        //Application.LoadLevel(Application.loadedLevel);
     }
 
     public void LoseLife()
     {
         lives--;
-        livesText.text = "Lives: " + lives;
-        //blow up paddle and create particles
-        Instantiate(deathParticles, clonePaddle.transform.position, Quaternion.identity);
+        //blow up paddle
         Destroy(clonePaddle);
         //recreate paddle
         Invoke("SetupPaddle", resetDelay);
