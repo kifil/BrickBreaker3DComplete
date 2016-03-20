@@ -40,6 +40,22 @@ public class GM : MonoBehaviour
         Instantiate(bricksPrefab, new Vector3(0f, 0f, 0f), Quaternion.identity);
     }
 
+    public void LoseLife()
+    {
+        lives--;
+        //blow up paddle
+        Destroy(clonePaddle);
+        //recreate paddle
+        Invoke("SetupPaddle", resetDelay);
+        CheckGameOver();
+    }
+
+    void SetupPaddle()
+    {
+        clonePaddle = Instantiate(paddle, new Vector3(0f, 0f, 0f), Quaternion.identity) as GameObject;
+    }
+
+
     void CheckGameOver()
     {
         //win condition
@@ -59,31 +75,16 @@ public class GM : MonoBehaviour
 
     }
 
+    public void DestroyBrick()
+    {
+        bricks--;
+        CheckGameOver();
+    }
+
     void Reset()
     {
         Time.timeScale = 1f;
         //reload current level
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-    }
-
-    public void LoseLife()
-    {
-        lives--;
-        //blow up paddle
-        Destroy(clonePaddle);
-        //recreate paddle
-        Invoke("SetupPaddle", resetDelay);
-        CheckGameOver();
-    }
-
-    void SetupPaddle()
-    {
-        clonePaddle = Instantiate(paddle, new Vector3(0f, 0f, 0f), Quaternion.identity) as GameObject;
-    }
-
-    public void DestroyBrick()
-    {
-        bricks--;
-        CheckGameOver();
     }
 }
